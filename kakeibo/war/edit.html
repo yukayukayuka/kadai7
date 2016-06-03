@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>内容の変更</title>
+    <script type="text/javascript" src="lib.js"></script>
+        <script type="text/javascript">
+        <!--
+        function initial(){
+            var datas = getQuery();
+            getData(datas.id);
+        }
+         
+        function callback(request){
+            var arr = eval(request.responseText);
+            var data = arr[0];
+            document.getElementById("id").value = data.id;
+            document.getElementById("title").value = data.title;
+            document.getElementById("url").value = data.url;
+            document.getElementById("comment").value = data.comment;
+        }
+        //-->
+        </script>
+    </head>
+    <body onload="initial();">
+        <h1>内容の変更</h1>
+        <table>
+        <form method="post" action="/edit">
+            <input type="hidden" id="id" name="id">
+            <tr><th>収支:</th><td><input type="text" id="shuushi" name="shuushi"></td></tr>
+            <tr><th>金額:</th><td><input type="int" id="payment" name="payment"></td></tr>
+            <tr><th>内訳:</th><td><textarea id="comment" name="comment"></textarea></td></tr>
+            <tr><th></th><td><input type="submit" value="変更"></td></tr>
+        </form>
+        </table>
+    </body>
+</html>

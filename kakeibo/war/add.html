@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>入力画面</title>
+    </head>
+    <body bgcolor="#ffa07a">
+    <font face="メイリオ">
+        <h1>金額入力</h1>
+        <table>
+        <form method="post" action="/add">
+            <tr><th>金額:</th><td><input type="number" name="payment"></td></tr>
+            <tr><th>内訳:</th><td><textarea name="comment"></textarea></td></tr>
+            <tr><th></th><td><input type="radio" name="shuushi" value="+" />収入
+							<input type="radio" name="shuushi" value="-" />支出</td></tr>
+            <tr><th></th><td><input type="submit" value="登録"></td></tr>
+        </form>
+        </table>
+    </body>
+</html>
