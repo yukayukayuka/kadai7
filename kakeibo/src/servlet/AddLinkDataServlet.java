@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.net.URL;
-import java.util.*;
  
 import javax.jdo.*;
 import javax.servlet.ServletException;
@@ -28,11 +26,13 @@ public class AddLinkDataServlet extends HttpServlet {
         int payment2 = Integer.parseInt(payment);
         String comment = req.getParameter("comment");
         String shuushi=req.getParameter("shuushi");
-        LinkData data = new LinkData(payment2,comment,shuushi);
+        LinkData data = new LinkData(shuushi,payment2,comment);
         PersistenceManagerFactory factory = PMF.get();
         PersistenceManager manager = factory.getPersistenceManager();
-        try {
+System.out.println("shuushi,payment2,comment: "+shuushi+", "+payment2+", "+comment);
+        try {	
             manager.makePersistent(data);
+System.out.println("data: "+data);
         } finally {
             manager.close();
         }

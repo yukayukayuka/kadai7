@@ -8,9 +8,7 @@ import javax.servlet.http.*;
  
 @SuppressWarnings("serial")
 public class KakeiboServlet extends HttpServlet {
-    public void doGet(HttpServletRequest req,
-            HttpServletResponse resp)
-            throws IOException {
+    public void doGet(HttpServletRequest req,HttpServletResponse resp)throws IOException {
         PersistenceManagerFactory factory = PMF.get();
         PersistenceManager manager = factory.getPersistenceManager();
         resp.setCharacterEncoding("UTF-8");
@@ -34,12 +32,13 @@ public class KakeiboServlet extends HttpServlet {
         String res = "[";
         if (list != null){
             for(LinkData data:list){
-                res += "{id:" + data.getId() +  "',payment:'" +
-                    data.getPayment() +"',comment:'" + data.getComment() + "'},";
+                res += "{id:"+data.getId() +"',shuushi:'"+data.getShuushi() + "',payment:'"+data.getPayment() +
+                		"',comment:'"+data.getComment() + "'},";
             }
         }
         res += "]";
         out.println(res);
+        System.out.println("res: "+res);
         manager.close();
     }
 }

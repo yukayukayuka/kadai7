@@ -1,7 +1,4 @@
 package servlet;
-
-import java.net.URL;
-import java.util.Date;
  
 import javax.jdo.annotations.*;
  
@@ -12,29 +9,31 @@ public class LinkData {
     private Long id;
      
     @Persistent
+    private String shuushi;
+    
+    @Persistent
     private int payment;
      
     @Persistent
     private String comment;
     
-    @Persistent
-    private String shuushi;
 
-    public LinkData(int payment, String comment,String shuushi) {
+
+    public LinkData(String shuushi,int payment, String comment) {
         super();
+        this.shuushi=shuushi;
         this.payment = payment;
         this.comment = comment;
-        this.shuushi=shuushi;
     }
  
     public Long getId() {return id;} 
     public void setId(Long id) {this.id = id;}
+    
+    public String getShuushi() {return shuushi;}
+    public void setShuushi(String shuushi) {this.shuushi = shuushi;}
  
     public int getPayment() {return payment;}
     public void setPayment(int payment) {this.payment = payment;}
-
-    public String getShuushi() {return shuushi;}
-    public void setShuushi(String shuushi) {this.shuushi = shuushi;}
  
     public String getComment() {return comment;}
     public void setComment(String comment) {this.comment = comment;}

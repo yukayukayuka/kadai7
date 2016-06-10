@@ -5,7 +5,7 @@
         <title>内容の変更</title>
     <script type="text/javascript" src="lib.js"></script>
         <script type="text/javascript">
-        <!--
+
         function initial(){
             var datas = getQuery();
             getData(datas.id);
@@ -15,11 +15,11 @@
             var arr = eval(request.responseText);
             var data = arr[0];
             document.getElementById("id").value = data.id;
-            document.getElementById("title").value = data.title;
-            document.getElementById("url").value = data.url;
+            document.getElementById("shuushi").value = data.shuushi;
+            document.getElementById("payment").value = data.payment;
             document.getElementById("comment").value = data.comment;
         }
-        //-->
+
         </script>
     </head>
     <body onload="initial();">
