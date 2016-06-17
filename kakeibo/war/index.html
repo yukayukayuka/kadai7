@@ -4,52 +4,71 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <title>みんなの家計簿</title>
+    <style>
+		table {border-collapse: collapse;}
+		td {border: solid 1px;
+			padding: 0.5em;
+		}
+	</style>
     <script type="text/javascript" src="lib.js"></script>
         <script type="text/javascript">
         
-console.log("console--------1");
-
         function callback(request){
-console.log("console--------2");
             var json = eval(request.responseText);
             var res = '';
-console.log("console--------3");
-            if (json.length == 1){
-console.log("console--------4");           
+            res+='<tr><th>id</th> <th>収支</th> <th>金額</th> <th>内訳</th></tr>';
+            
+            var plus=0;
+            var minus=0;
+            var sum=0;
+
+            if (json.length == 1){         
                 res += '<tr><td>' + json[0].id +'</td></tr>';
                 res += '<tr><td>' + json[0].shuushi +'</td></tr>';
                 res += '<tr><td>' + json[0].payment +'</td></tr>';
-                res += '<tr><td>' + json[0].comment +'</td></tr>';
-console.log("console--------5");                
+                res += '<tr><td>' + json[0].comment +'</td></tr>';              
             } else {
                 for (var i = 0;i < json.length;i++){
-console.log("console--------6");                
-                    res += '<tr><td><a href="javascript:return false;" onclick="getData(' + json[i].id +');">' + json[i].id + '</a></td>';
+                    res += '<tr><td>' + json[i].id + '</a></td>';
                     res += '<td>'+json[i].shuushi+'</td>' + '<td>'+json[i].payment+'</td>' + '<td>'+json[i].comment+'</td>' +
                     '<td><a href="edit.html?id=' + json[i].id + '">Edit</a></td>' +
                     '<td><a href="del.html?id=' + json[i].id + '">Delete</a></td></tr>';
- console.log("console--------7");                   
+                    if(json[i].shuushi=="+")plus+=parseInt(json[i].payment);
+                    else minus-=parseInt(json[i].payment);
                 }
             }
-console.log("console--------8");            
+            sum=parseInt(plus+minus);
+            console.log("-----------");
+            console.log("plus: "+plus);
+            console.log("minus: "+minus);
+            console.log("sum: "+sum);
+            res+='<table><tr><td>収入の合計</td><td>' +plus+ '</td></tr><tr><td>支出の合計</td><td>' 
+            +minus+'</td></tr><tr><td>残高</td><td>' +sum+'</td></tr></table>';
+            
             var obj = document.getElementById("datatable");
             obj.innerHTML = res;
+
         }
-console.log("console--------9");        
         </script>
+        <script>function koushin(){location.reload();}</script>
   </head>
 
   <body bgcolor="#ffa07a" onload="getData(null);">
     <font face="メイリオ">
     <h1>家計簿入力</h1>
     <table id="datatable" border="1">
-      <tr>
+    <div><a href="/users">ログイン・ログアウト</a></div>
+    
+    	<form> 
+			<input type="button" value="更新" onclick="koushin()">
+		</form>
+
+	  <tr>
         <td>wait...</td>
-        <script>console.log("index----------");
-        
-        </script>
-      </tr>
+      </tr>  
     </table>
+    <br>
+
 	<br>
     <div><a href="add.html">金額を入力</a></div>
 </body>

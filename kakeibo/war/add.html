@@ -6,7 +6,13 @@
     </head>
     <body bgcolor="#ffa07a">
     <font face="メイリオ">
+   
         <h1>金額入力</h1>
+        
+        <form method="post" action="index.html">
+            <input type="submit" value="戻る">
+        </form>
+        
         <table>
         <form method="post" action="/add">
             <tr><th>金額:</th><td><input type="number" name="payment"></td></tr>
@@ -14,7 +20,7 @@
             <tr><th></th><td><input type="radio" name="shuushi" value="+" />収入
 							<input type="radio" name="shuushi" value="-" />支出</td></tr>
             <tr><th></th><td><input type="submit" value="登録"></td></tr>
-        </form>
+        </form>       
         </table>
     </body>
 </html>

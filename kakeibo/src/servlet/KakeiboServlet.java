@@ -29,16 +29,23 @@ public class KakeiboServlet extends HttpServlet {
                 list.add(data);
             } catch(JDOObjectNotFoundException e){}
         }
-        String res = "[";
-        if (list != null){
-            for(LinkData data:list){
-                res += "{id:"+data.getId() +"',shuushi:'"+data.getShuushi() + "',payment:'"+data.getPayment() +
-                		"',comment:'"+data.getComment() + "'},";
-            }
-        }
-        res += "]";
-        out.println(res);
-        System.out.println("res: "+res);
-        manager.close();
+		String res = "[";
+		int sum=0;
+		int plus=0;
+		int minus=0;
+		if (list != null) {
+			for (LinkData data : list) {
+				res += "{id:" + data.getId() + ",shuushi:'" + data.getShuushi() + "',payment:'" + data.getPayment()
+						+ "',comment:'" + data.getComment() + "'},";
+				if(data.getShuushi()=="+")plus+=data.getPayment();
+				else minus-=data.getPayment();
+				sum+=plus+minus;
+			}
+		}
+
+		res +="]";
+		out.println(res);
+		System.out.println("res: " + res);
+		manager.close();
     }
 }

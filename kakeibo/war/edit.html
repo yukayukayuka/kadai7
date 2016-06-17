@@ -22,8 +22,13 @@
 
         </script>
     </head>
-    <body onload="initial();">
+    <body onload="initial();" bgcolor="#ffa07a">
         <h1>内容の変更</h1>
+        
+        <form method="post" action="index.html">
+        	<input type="submit" value="戻る">
+        </form>
+        
         <table>
         <form method="post" action="/edit">
             <input type="hidden" id="id" name="id">
@@ -32,6 +37,7 @@
             <tr><th>内訳:</th><td><textarea id="comment" name="comment"></textarea></td></tr>
             <tr><th></th><td><input type="submit" value="変更"></td></tr>
         </form>
+        
         </table>
     </body>
 </html>

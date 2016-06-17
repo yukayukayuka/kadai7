@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.*;
  
 import javax.jdo.*;
 import javax.servlet.ServletException;
